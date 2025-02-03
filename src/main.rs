@@ -11,7 +11,7 @@ struct DiscordNotifications {
 }
 
 fn main() {
-    let mut file = File::open("example.json");
+    let file = File::open("example.json");
     if file.is_err() {
         panic!("Error opening example.json!");
     }
