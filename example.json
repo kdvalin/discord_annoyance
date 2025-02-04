@@ -1,6 +1,6 @@
 [
   {
-    "message": "It's been $DATE days nerdfaces!",
+    "message": "It's been $DATE days nerdfaces! <@282953724526329856>",
     "webhook_url": "https://discord.com/api/webhooks/1336121779357356105/7J6J2TNGzV9XZQ0um-QpUa9_GBca97Dqi7pvid4ZrzCIJxk3lX4FAm8cD6dHh67_LBuy",
     "since": "2024-12-30"
   }
