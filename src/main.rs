@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::env;
 
 use chrono::NaiveDate;
 use serde::{Serialize, Deserialize};
@@ -11,7 +12,11 @@ struct DiscordNotifications {
 }
 
 fn main() {
-    let file = File::open("example.json");
+    let filename = match env::args().nth(1) {
+        Some(t) => t,
+        None => panic!("Usage: discord_notifications <JSON filename>")
+    };
+    let file = File::open(filename);
     if file.is_err() {
         panic!("Error opening example.json!");
     }
