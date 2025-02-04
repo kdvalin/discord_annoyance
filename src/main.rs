@@ -16,9 +16,10 @@ fn main() {
         Some(t) => t,
         None => panic!("Usage: discord_notifications <JSON filename>")
     };
-    let file = File::open(filename);
+    let file = File::open(&filename);
     if file.is_err() {
-        panic!("Error opening example.json!");
+        let error = file.unwrap_err();
+        panic!("Error opening {}!  {}", filename, error);
     }
     let data: Vec<DiscordNotifications> = serde_json::from_reader(file.unwrap()).expect("Not valid json");
     let today = chrono::offset::Utc::now().date_naive();
