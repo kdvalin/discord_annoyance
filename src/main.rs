@@ -16,7 +16,13 @@ fn main() {
         panic!("Error opening example.json!");
     }
     let data: Vec<DiscordNotifications> = serde_json::from_reader(file.unwrap()).expect("Not valid json");
+    let today = chrono::offset::Utc::now().date_naive();
     for item in data {
-        println!("{}", item.message);
+        let date_diff = today - item.since;
+        let req = reqwest::blocking::Client::new()
+            .post(item.webhook_url).body( 
+                format!("{{\"content\": \"{}\"}}", item.message.replace("$DATE", date_diff.num_days().to_string().as_str()))
+            ).header("Content-Type", "application/json").send().unwrap();
+        println!("{}: {}", req.status(), req.text().unwrap());
     }
 }
