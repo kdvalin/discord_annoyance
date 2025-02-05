@@ -23,5 +23,5 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           push: true
-          tags: toshibhtr/discord-annoyance:latest
+          tags: quay.io/toshibhtr/discord-annoyance:latest
           file: Containerfile
