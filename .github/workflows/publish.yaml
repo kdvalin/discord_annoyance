@@ -13,7 +13,7 @@ jobs:
           username: ${{ secrets.QUAY_UNAME }}
           password: ${{ secrets.QUAY_PASSWD }}
           registry: quay.io
-          
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -24,3 +24,4 @@ jobs:
         with:
           push: true
           tags: toshibhtr/discord-annoyance:latest
+          file: Containerfile
